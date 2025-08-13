@@ -1,19 +1,32 @@
 const express = require("express");
 const app = express();
 
+app.use(express.json());
 
-function addUserMiddleware(req, res, next) {
-    req.user = "Guest"; 
-    next();
-}
+// Routes
 
+// GET /orders
+app.get("/orders", (req, res) => {
+    res.send("Here is the list of all orders.");
+});
 
-app.get("/welcome",addUserMiddleware, (req, res) => {
-    res.send(`<h1>Welcome, ${req.user}!</h1>`);
+// POST /orders
+app.post("/orders", (req, res) => {
+    res.send("A new order has been created.");
+});
+
+// GET /users
+app.get("/users", (req, res) => {
+    res.send("Here is the list of all users.");
+});
+
+// POST /users
+app.post("/users", (req, res) => {
+    res.send("A new user has been added.");
 });
 
 
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
