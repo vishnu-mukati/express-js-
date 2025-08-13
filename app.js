@@ -8,7 +8,7 @@ function addUserMiddleware(req, res, next) {
 }
 
 
-app.get("/welcome", addUserMiddleware, (req, res) => {
+app.get("/welcome",addUserMiddleware, (req, res) => {
     res.send(`<h1>Welcome, ${req.user}!</h1>`);
 });
 
